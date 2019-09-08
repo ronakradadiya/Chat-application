@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -30,4 +30,62 @@
   to {
     transform: rotate(360deg);
   }
+} */
+body {
+  overflow: hidden;
+}
+
+.form-landing-page {
+  display: flex;
+  justify-content: center;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.chat-container {
+  width: 360px;
+  height: 616px;
+  background: #f2f3f3;
+}
+
+.topbar {
+  background: #2979ff;
+  color: #ffffff;
+  height: 56px;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+}
+
+.topbar p {
+  margin: 0;
+  padding-left: 80px;
+  padding-top: 12px;
+  box-sizing: border-box;
+}
+
+.mainbodybar {
+  height: 453px;
+  width: 344px;
+  margin: 0 8px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+
+.inputbar input {
+  width: 344px;
+  height: 48px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  outline-style: none;
+  padding-left: 10px;
+  border: none;
+  margin-bottom: 8px;
+  margin-left: 8px;
 }
