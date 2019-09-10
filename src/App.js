@@ -1,27 +1,52 @@
 import React, {Component} from 'react';
-// import logo from './logo.svg';
 import './App.css';
-import LandingPage from './components/LandingPage'
-import Topbar from './components/Topbar'
-import Mainbodybar from './components/Mainbodybar'
-import Inputbar from './components/Inputbar'
+import LandingPage from './components/LandingPage';
+import Topbar from './components/Topbar';
+import Mainbodybar from './components/Mainbodybar';
+import Inputbar from './components/Inputbar';
+import socket from '../src/server/client-socket';
 
 class App extends Component {
 
-  // onSearchSubmit = (term) => {
-  //   console.log(term);  
-  // }
+  state = {
+    inputUsername: '',
+    chat: {}
+  }
+
+  onSearchSubmit = (term) => {
+    console.log(term);
+    
+    socket.emit("check-username", {username: term});
+
+    socket.on('username-found', (data) => {
+        this.setState({
+          inputUsername: data.name,
+          chat: data
+      });
+
+    });
+
+    socket.on('username-not-found', (data) => {
+      alert("Invalid username!!");
+    });
+
+  }
+
 
   render() {
-
+  
     return (
       <div className="App">
-        {/* <LandingPage onSubmit={this.onSearchSubmit} /> */}
+        {
+          !this.state.inputUsername ?
+        <LandingPage onSubmit={this.onSearchSubmit} />
+        :
         <div className="chat-container">
-          <Topbar />
-          <Mainbodybar />
+          <Topbar username={this.state.inputUsername} />
+          <Mainbodybar username={this.state.inputUsername}/>
           <Inputbar />
         </div>
+        }
       </div>
     );
   }

@@ -12,8 +12,8 @@ class LandingPage extends Component {
         });
     }
 
-    onsubmitForm = (e) => {
-        e.preventDefault();
+    onsubmitForm = (event) => {
+        event.preventDefault();
         this.props.onSubmit(this.state.inputValue)
     }
 
