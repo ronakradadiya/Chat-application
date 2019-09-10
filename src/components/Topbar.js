@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import '../css/TopBar.css';
 
-class Topbar extends Component {
+class TopBar extends Component {
     
     render() {
         console.log('Props is in topbar ',this.props.username);
@@ -14,4 +15,4 @@ class Topbar extends Component {
     }
 }
 
-export default Topbar
+export default TopBar

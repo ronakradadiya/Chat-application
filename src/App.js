@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 import LandingPage from './components/LandingPage';
-import Topbar from './components/Topbar';
-import Mainbodybar from './components/Mainbodybar';
-import Inputbar from './components/Inputbar';
+import TopBar from './components/TopBar';
+import MainBodyBar from './components/MainBodyBar';
+import InputBar from './components/InputBar';
 import socket from '../src/server/client-socket';
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
   onSearchSubmit = (term) => {
     console.log(term);
     
-    socket.emit("check-username", {username: term});
+    socket.emit('check-username', {username: term});
 
     socket.on('username-found', (data) => {
         this.setState({
@@ -42,9 +42,9 @@ class App extends Component {
         <LandingPage onSubmit={this.onSearchSubmit} />
         :
         <div className="chat-container">
-          <Topbar username={this.state.inputUsername} />
-          <Mainbodybar username={this.state.inputUsername}/>
-          <Inputbar />
+          <TopBar username={this.state.inputUsername} />
+          <MainBodyBar username={this.state.inputUsername}/>
+          <InputBar />
         </div>
         }
       </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Inputbar extends Component {
+class InputBar extends Component {
     render() {
         return (
             <div className="inputbar">
@@ -12,4 +12,4 @@ class Inputbar extends Component {
     }
 }
 
-export default Inputbar
+export default InputBar

@@ -5,10 +5,10 @@ const client = require('socket.io').listen(4000).sockets;
 console.log('Mongoose connected');
 
 client.on('connection', function(socket) {
-    console.log('socket connected'); 
+    // console.log('socket connected'); 
 
     socket.on('check-username', (data) => {
-        console.log(data.username);
+        // console.log(data.username);
 
         Chat.find({}).then(res => {  
 
@@ -21,9 +21,17 @@ client.on('connection', function(socket) {
 
             socket.emit('username-not-found', {username: 'Invalid username!!'});
             
-        });
-
-       
-        
+        });    
     });
+
+
+    socket.on('retrieve-chat', function() {
+
+        Chat.find({}).then(res => {
+            
+            socket.emit('retrieve-all-chats', res)
+        });
+    });
+
+
 });

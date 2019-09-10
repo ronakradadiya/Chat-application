@@ -3,11 +3,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.form-landing-page {
-  display: flex;
-  justify-content: center;
-}
-
 .App {
   width: 100vw;
   height: 100vh;
@@ -23,71 +18,3 @@ body {
   background: #f2f3f3;
 }
 
-.topbar {
-  background: #2979ff;
-  color: #ffffff;
-  height: 56px;
-  margin-bottom: 24px;
-  box-sizing: border-box;
-}
-
-.topbar p {
-  margin: 0;
-  padding-left: 80px;
-  padding-top: 12px;
-  box-sizing: border-box;
-}
-
-.mainbodybar {
-  height: 453px;
-  width: 344px;
-  margin: 0 8px;
-  margin-bottom: 30px;
-  box-sizing: border-box;
-}
-
-.inputbar input {
-  width: 344px;
-  height: 48px;
-  box-sizing: border-box;
-  border-radius: 20px;
-  outline-style: none;
-  padding-left: 10px;
-  border: none;
-  margin-bottom: 8px;
-  margin-left: 8px;
-}
-
-.form-landing-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-landing-page form {
-  width: 300px;
-  height: 200px;
-}
-
-.form-landing-page form label {
-  display: block;
-  text-align: center;
-  font-weight: bold;
-  font-size: 40px;
-  color: #2979ff;
-  margin-bottom: 10px;
-}
-
-.form-landing-page form input[type="text"] {
-  display: block;
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid #111111;
-  padding-left: 5px;
-  box-sizing: border-box;
-  border-color: #2979ff;
-  font-size: 20px;
-}
-.form-landing-page form input[type="text"]:focus {
-  outline-style: none;
-}

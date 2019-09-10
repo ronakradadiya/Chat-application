@@ -1,0 +1,27 @@
+.mainbodybar {
+    height: 453px;
+    width: 344px;
+    margin: 0 8px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.retrieve-chat-left {
+    text-align: left;
+}
+
+.retrieve-chat-right {
+    text-align: right;
+}
+
+.mainbodybar::-webkit-scrollbar { 
+    /* display: none;  */
+    width: 0px; 
+    background: transparent;
+} 
+
+.mainbodybar::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}

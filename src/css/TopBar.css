@@ -1,0 +1,14 @@
+.topbar {
+    background: #2979ff;
+    color: #ffffff;
+    height: 56px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+  }
+  
+  .topbar p {
+    margin: 0;
+    padding-left: 80px;
+    padding-top: 12px;
+    box-sizing: border-box;
+  }
