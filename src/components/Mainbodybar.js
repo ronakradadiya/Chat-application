@@ -7,11 +7,10 @@ import '../css/MainBodyBar.css'
 class MainBodyBar extends Component {
 
     state = {
-        messages: []
+        messages: [],
     }
 
-    componentDidMount() {
-
+    componentDidMount() {        
         var chatMessageFromDB = [];
         var message;
 
@@ -32,22 +31,30 @@ class MainBodyBar extends Component {
 
             this.setState({
                 messages: chatMessageFromDB
-            })
+            });
 
         });
+
 
     }
 
     render() {
-        console.log('render')
+
         return (
             <div className="mainbodybar">
                 {
-                    this.state.messages.map(message => {
-                        return message
+                    this.state.messages.map((message,index) => {
+                        return <div key={index}>{message}</div>
                     })
                 }
+                {
+                    this.props.currentChat.map((chat,index) => {
+                        return <div key={index}>{chat}</div>
+                    })
+                }
+                
             </div>
+
         )
     }
 }
