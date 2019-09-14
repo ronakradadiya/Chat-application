@@ -3,18 +3,5 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.App {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  /* flex-direction: column; */
-  justify-content: center;
-  margin-top: 20px;
-}
 
-.chat-container {
-  width: 360px;
-  height: 616px;
-  background: #f2f3f3;
-}
 

@@ -1,0 +1,13 @@
+.inputbar form input[type="text"] {
+    display: block;
+    width: 354px;
+    height: 40px;
+    margin: 0;
+    border-radius: 50px;
+    margin: 0 3px;
+    border: none;
+}
+
+.inputbar form input[type="text"]:focus {
+    outline-style: none;
+}

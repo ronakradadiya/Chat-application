@@ -6,9 +6,9 @@
     box-sizing: border-box;
   }
   
-  .topbar p {
+  .topbar div {
     margin: 0;
     padding-left: 80px;
-    padding-top: 12px;
+    padding-top: 8px;
     box-sizing: border-box;
   }

@@ -1,17 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../css/TopBar.css';
 
-class TopBar extends Component {
-    
-    render() {
-        
-        const {username} = this.props
-        return (
-            <div className="topbar">
-                <p>{username.charAt(0).toUpperCase() + username.slice(1)}</p>
-            </div>
-        )
-    }
+export default function TopBar({username,currentTyping}) {
+    return (
+        <div className="topbar">
+            <div>{username.charAt(0).toUpperCase() + username.slice(1)}</div>
+            <div>{currentTyping}</div>
+        </div>
+    )
 }
-
-export default TopBar

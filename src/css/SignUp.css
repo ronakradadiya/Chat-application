@@ -1,0 +1,78 @@
+.signup {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+ form {
+    width: 300px;
+    height: 200px;
+  }
+  
+   form #header {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    color: #2979ff;
+    margin-bottom: 10px;
+  }
+  
+   form input[type="text"], 
+   form input[type="password"] {
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #111111;
+    padding-left: 5px;
+    box-sizing: border-box;
+    border-color: #2979ff;
+    font-size: 20px;
+    margin-left: 0;
+  }
+
+ form input {
+    margin-bottom: 20px;
+  }
+  
+  form input[type="text"]:focus,
+  form input[type="password"]:focus {
+    outline-style: none;
+  }
+
+  form input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    color: #ffffff;
+    background-color: #2979ff;
+    border: none;
+    font-size: 15px;
+    padding: 8px 15px;
+    border-radius: 6px;  
+    transition: background-color .15s ease-in-out;
+  }
+
+  form input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: #487EB0;
+  }  
+
+  form input[type="submit"]:focus {
+    outline-style: none;
+  }
+
+ a {
+   text-decoration: none;
+ }
+
+ .registered {
+    text-align: center;
+ }
+
+ span {
+   margin-left: 5px;
+   color: #2979ff;
+ }

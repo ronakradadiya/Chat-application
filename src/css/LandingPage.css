@@ -1,23 +1,9 @@
-.form-landing-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.inputbar input {
-    width: 344px;
-    height: 48px;
-    box-sizing: border-box;
-    border-radius: 20px;
-    outline-style: none;
-    padding-left: 10px;
-    border: none;
-    margin-bottom: 8px;
-    margin-left: 8px;
+  .form-landing-page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
   }
-  
-  
-  
+
   .form-landing-page form {
     width: 300px;
     height: 200px;
@@ -32,7 +18,8 @@
     margin-bottom: 10px;
   }
   
-  .form-landing-page form input[type="text"] {
+  .form-landing-page form input[type="text"], 
+  .form-landing-page form input[type="password"] {
     display: block;
     width: 100%;
     border: none;
@@ -41,8 +28,14 @@
     box-sizing: border-box;
     border-color: #2979ff;
     font-size: 20px;
+    margin-left: 0;
+  }
+
+  .form-landing-page form input[type="text"] {
+    margin-bottom: 20px;
   }
   
-  .form-landing-page form input[type="text"]:focus {
+  .form-landing-page form input[type="text"]:focus,
+  .form-landing-page form input[type="password"]:focus {
     outline-style: none;
   }

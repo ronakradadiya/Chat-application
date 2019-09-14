@@ -1,36 +1,71 @@
 require('./server.js');
 const Chat = require('./model');
+const UserVerify = require('./auth-model');
 const client = require('socket.io').listen(4000).sockets;
 
 console.log('Mongoose connected');
 
 client.on('connection', function(socket) {
-    // console.log('socket connected'); 
+
+    //Registration
+    socket.on('register', (data) => {
+
+        const RegistrationDetails = new UserVerify({
+            username: data.username,
+            password: data.password
+        });
+
+        RegistrationDetails.save().then(() => {
+            socket.emit('saved', 'Successfully saved')
+        }).catch(e => {
+            console.log(e)
+        });
+        
+    });
+    
     //Authenticate user
-    socket.on('check-username', (data) => {
-        // console.log(data.username);
+    socket.on('check-credentials', (data) => {
+        console.log('data is ',data);
+        
+        // UserVerify.find({}).then(res => {  
 
-        Chat.find({}).then(res => {  
+        //     for (let value of res ) {
+        //         if (value.username == data.username && value.password == data.password) {
+        //             console.log(value);
+        //             return socket.emit('correct-credentials', value);
+        //         }
+        //     }
 
-            for (let value of res ) {
-                
-                if (value.name == data.username) {
-                    return socket.emit('username-found', value);
-                }
-            }
-
-            socket.emit('username-not-found', {username: 'Invalid username!!'});
+        //     socket.emit('incorrect-credentials', 'Invalid Details!!');
             
-        });    
+        // });   
+
+        UserVerify.findByCredentials(data.username, data.password).then(user => {
+            socket.emit('correct-credentials', user);
+        }).catch(e => {
+            socket.emit('incorrect-credentials', e.message);
+        });
     });
 
-    //Get chats from database after user is authenticated
-    socket.on('retrieve-chat', function() {
-
+    //Get chats from database
+    socket.on('retrieve-chat', function(username) {
+        let count = 0;
         Chat.find({}).then(res => {
+
+            for (let valueName of res) {
+                if (username == valueName.name) {
+                    count+=1
+                }
+            }
             
-            socket.emit('retrieve-all-chats', res)
+            if (count!=0) {
+                socket.emit('retrieve-all-chats', res)
+            }
         });
+    });
+
+    socket.on('typing', (data) => {
+        socket.broadcast.emit('sending-type', data)
     });
 
     socket.on('inputMessage', (data) => {

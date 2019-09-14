@@ -1,0 +1,14 @@
+.app-layout {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+}
+
+.chat-container {
+    width: 360px;
+    height: 616px;
+    background: #f2f3f3;
+}
+  
+  

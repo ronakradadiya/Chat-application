@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/InputBar.css';
 import socket from '../server/client-socket';
 import ChatListRight from './ChatListRight';
 import ChatListLeft from './ChatListLeft';
@@ -11,6 +12,8 @@ class InputBar extends Component {
     }
 
     onChangeMessage = (event) => {
+
+        socket.emit('typing', this.props.username)
         
         this.setState({
             message: event.target.value
@@ -18,26 +21,29 @@ class InputBar extends Component {
     }
 
     componentDidMount() {
+
+       socket.on('sending-type', (data) => {
+           const typingUser = <i>{data} is typing...</i>;   
+           this.props.onTyping(typingUser)
+       })
         
         socket.on('currentsocketchat', (data) => {
             const message = <ChatListRight chatMessage={data.message} />
             this.setState({
                 currentChat: [...this.state.currentChat, message]
-            }, () => console.log(this.state.currentChat));
-                
+            }, () => console.log('this.state',this.state.currentChat));
             this.props.onChatSocket(this.state.currentChat)
         });
+        
 
         socket.on('broadcastchat', (data) => {
             const message = <ChatListLeft chatMessage={data.message} />
             this.setState({
                 currentChat: [...this.state.currentChat, message]
-            }, () => console.log(this.state.currentChat));
+            }, () => console.log('this.state',this.state.currentChat));
                 
             this.props.onChatSocket(this.state.currentChat)
-        });
-
-        
+        });    
     }
 
     onSubmitMessage = (event) => {     
@@ -57,7 +63,6 @@ class InputBar extends Component {
     }
 
     render() {
-        
         return (
             <div className="inputbar">
                 <form onSubmit={this.onSubmitMessage}>

@@ -11,35 +11,32 @@ class MainBodyBar extends Component {
     }
 
     componentDidMount() {        
-        var chatMessageFromDB = [];
         var message;
 
-        socket.emit('retrieve-chat')
+        socket.emit('retrieve-chat', this.props.username)
 
         socket.on('retrieve-all-chats', (chats) => {
             
-            for (let chat of chats) {
+            for (var chat of chats) {
 
                 if(chat.name === this.props.username) {
                     message = <ChatListRight key={chat._id} chatMessage={chat.message} />;
-                    chatMessageFromDB.push(message)
+                    this.setState({
+                        messages: [...this.state.messages, message]
+                    });
                 } else {
                     message = <ChatListLeft key={chat._id} chatMessage={chat.message} />;
-                    chatMessageFromDB.push(message)
+                    this.setState({
+                        messages: [...this.state.messages, message]
+                    });
                 }
             }
 
-            this.setState({
-                messages: chatMessageFromDB
-            });
-
         });
 
-
     }
-
+    
     render() {
-
         return (
             <div className="mainbodybar">
                 {
