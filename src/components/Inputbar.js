@@ -30,7 +30,7 @@ class InputBar extends Component {
        })
         
         socket.on('currentsocketchat', (data) => {
-            const message = <ChatListRight chatMessage={data.message} />
+            const message = <ChatListRight chatMessage={data.message} date={data.date} />
             this.setState({
                 currentChat: [...this.state.currentChat, message]
             }, () => console.log('this.state',this.state.currentChat));
@@ -39,7 +39,7 @@ class InputBar extends Component {
         
 
         socket.on('broadcastchat', (data) => {
-            const message = <ChatListLeft chatMessage={data.message} name={data.name} />
+            const message = <ChatListLeft chatMessage={data.message} name={data.name} date={data.date} />
             this.setState({
                 currentChat: [...this.state.currentChat, message]
             }, () => console.log('this.state',this.state.currentChat));
@@ -59,7 +59,8 @@ class InputBar extends Component {
 
         socket.emit('inputMessage', {
             username: this.props.username,
-            message: this.state.message
+            message: this.state.message,
+            date: Date().slice(16,21)
         });
         
     }
@@ -70,6 +71,7 @@ class InputBar extends Component {
                 <form onSubmit={this.onSubmitMessage}>
                     <textarea
                     required={true}
+                    wrap="soft"
                     placeholder="Enter message" 
                     value={this.state.message}
                     onChange={this.onChangeMessage}></textarea>

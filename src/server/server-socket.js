@@ -59,8 +59,9 @@ client.on('connection', function(socket) {
         const newChat = new Chat({
             name: data.username,
             message: data.message,
+            date: data.date
         });
-
+        
         newChat.save().then(() => {
             socket.emit('currentsocketchat', newChat);
             socket.broadcast.emit('broadcastchat', newChat);

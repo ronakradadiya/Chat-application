@@ -31,12 +31,12 @@ class MainBodyBar extends Component {
             for (var chat of chats) {
 
                 if(chat.name === this.props.username) {
-                    message = <ChatListRight key={chat._id} chatMessage={chat.message} />;
+                    message = <ChatListRight key={chat._id} chatMessage={chat.message} date={chat.date} />;
                     this.setState({
                         messages: [...this.state.messages, message]
                     });
                 } else {
-                    message = <ChatListLeft key={chat._id} chatMessage={chat.message} name={chat.name} />;
+                    message = <ChatListLeft key={chat._id} chatMessage={chat.message} name={chat.name} date={chat.date} />;
                     this.setState({
                         messages: [...this.state.messages, message]
                     });
