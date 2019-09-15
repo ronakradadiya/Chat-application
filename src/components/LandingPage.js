@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/LandingPage.css';
 import socket from '../server/client-socket';
+import { withAlert } from 'react-alert'
 
 class LandingPage extends Component {
 
@@ -23,22 +24,14 @@ class LandingPage extends Component {
 
     onSubmitForm = (event) => {
         event.preventDefault();
-        console.log(this.state.inputValue, this.state.inputPassword);
         socket.emit('check-credentials', {
             username: this.state.inputValue,
             password: this.state.inputPassword
         });
-        
-        // if (this.state.inputValue.length < 3) {
-        //     return alert("Username must have at least 3 characters");
-        // }
-        
     }
 
     componentDidMount() {
         socket.on('correct-credentials', (value) => {
-            console.log('Inside correct');
-            console.log('value is ',value)
             this.props.onSearchSubmit({
                 username: value.username,
                 password: value.password
@@ -46,7 +39,7 @@ class LandingPage extends Component {
         });
 
         socket.on('incorrect-credentials', (value) => {
-            alert(value)
+            this.props.alert.error(value);
         });
     }
 
@@ -73,4 +66,4 @@ class LandingPage extends Component {
     }
 }
 
-export default LandingPage
+export default withAlert()(LandingPage)

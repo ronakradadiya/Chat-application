@@ -2,12 +2,23 @@ import React, { Component } from 'react';
 import ChatListRight from './ChatListRight';
 import ChatListLeft from './ChatListLeft';
 import socket from '../server/client-socket';
-import '../css/MainBodyBar.css'
+import '../css/MainBodyBar.css';
 
 class MainBodyBar extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.containerRef = React.createRef();
+    }
+
     state = {
         messages: [],
+    }
+
+    componentDidUpdate() {
+        const node = this.containerRef.current;
+        node.scrollTop = node.scrollHeight;
     }
 
     componentDidMount() {        
@@ -25,7 +36,7 @@ class MainBodyBar extends Component {
                         messages: [...this.state.messages, message]
                     });
                 } else {
-                    message = <ChatListLeft key={chat._id} chatMessage={chat.message} />;
+                    message = <ChatListLeft key={chat._id} chatMessage={chat.message} name={chat.name} />;
                     this.setState({
                         messages: [...this.state.messages, message]
                     });
@@ -38,7 +49,7 @@ class MainBodyBar extends Component {
     
     render() {
         return (
-            <div className="mainbodybar">
+            <div className="mainbodybar" ref={this.containerRef}>
                 {
                     this.state.messages.map((message,index) => {
                         return <div key={index}>{message}</div>

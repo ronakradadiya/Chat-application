@@ -19,26 +19,13 @@ client.on('connection', function(socket) {
             socket.emit('saved', 'Successfully saved')
         }).catch(e => {
             console.log(e)
+            socket.emit('unsaved-error', 'Username already exists!!')
         });
         
     });
     
     //Authenticate user
-    socket.on('check-credentials', (data) => {
-        console.log('data is ',data);
-        
-        // UserVerify.find({}).then(res => {  
-
-        //     for (let value of res ) {
-        //         if (value.username == data.username && value.password == data.password) {
-        //             console.log(value);
-        //             return socket.emit('correct-credentials', value);
-        //         }
-        //     }
-
-        //     socket.emit('incorrect-credentials', 'Invalid Details!!');
-            
-        // });   
+    socket.on('check-credentials', (data) => {  
 
         UserVerify.findByCredentials(data.username, data.password).then(user => {
             socket.emit('correct-credentials', user);

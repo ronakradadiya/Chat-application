@@ -1,13 +1,38 @@
-.inputbar form input[type="text"] {
+.inputbar form textarea {
     display: block;
-    width: 354px;
+    width: 320px;
     height: 40px;
     margin: 0;
     border-radius: 50px;
     margin: 0 3px;
     border: none;
+    padding: 8px 0 0 8px;
 }
 
-.inputbar form input[type="text"]:focus {
+.inputbar form textarea:focus {
+    outline-style: none;
+}
+
+form {
+    position: relative;
+}
+
+svg {
+    font-size: 30px !important;
+    color: #2979ff;   
+}
+
+button {
+    position: absolute;
+    top: 5px;
+    right: -62px;
+    background: transparent;
+    color: transparent;
+    border: none;
+    outline-style: none;
+    z-index: 10;
+}
+
+button:focus {
     outline-style: none;
 }

@@ -16,8 +16,6 @@ class Layout extends Component {
   }
 
   onSearchSubmit = (term) => {
-    console.log('term is ',term); 
-
     this.setState({
       inputUsername: term.username,
       inputPassword: term.password
@@ -25,7 +23,6 @@ class Layout extends Component {
   }
 
   onChatSocket = (currentchat) => {
-     console.log('currentchat is ',currentchat);
      this.setState({
        currentChat: currentchat
      });
@@ -41,8 +38,7 @@ class Layout extends Component {
     });
   }
 
-  render() {
-    
+  render() {  
     return (
       <div className="app-layout">
         {

@@ -3,6 +3,8 @@ import '../css/InputBar.css';
 import socket from '../server/client-socket';
 import ChatListRight from './ChatListRight';
 import ChatListLeft from './ChatListLeft';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 class InputBar extends Component {
 
@@ -37,7 +39,7 @@ class InputBar extends Component {
         
 
         socket.on('broadcastchat', (data) => {
-            const message = <ChatListLeft chatMessage={data.message} />
+            const message = <ChatListLeft chatMessage={data.message} name={data.name} />
             this.setState({
                 currentChat: [...this.state.currentChat, message]
             }, () => console.log('this.state',this.state.currentChat));
@@ -66,11 +68,14 @@ class InputBar extends Component {
         return (
             <div className="inputbar">
                 <form onSubmit={this.onSubmitMessage}>
-                    <input 
-                    type="text" 
+                    <textarea
+                    required={true}
                     placeholder="Enter message" 
                     value={this.state.message}
-                    onChange={this.onChangeMessage} />
+                    onChange={this.onChangeMessage}></textarea>
+                    <button type="submit">
+                        <FontAwesomeIcon icon={faPlay} />
+                    </button>
                 </form>
             </div>
         )

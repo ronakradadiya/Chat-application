@@ -17,6 +17,7 @@ const userVerifySchema = new mongoose.Schema({
     }
 });
 
+//Verify username and password for signin
 userVerifySchema.statics.findByCredentials = async (username, password) => {
     const user = await UserVerify.findOne({username: username})
     if (!user) {

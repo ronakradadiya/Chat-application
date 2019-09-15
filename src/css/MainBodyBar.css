@@ -10,10 +10,28 @@
 
 .retrieve-chat-left {
     text-align: left;
+    width: 191px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding-left: 6px;
+    margin: 8px 0;
+    color: #4a4a4a;
+}
+
+.retrieve-chat-left .chat-left-name {
+    color: #f5a623;
+
 }
 
 .retrieve-chat-right {
-    text-align: right;
+    width: 201px;
+    background-color: #2979ff;
+    margin: 8px 0;
+    margin-left: 140px;
+    color: #fff;
+    padding: 4px 2px 4px 6px;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 .mainbodybar::-webkit-scrollbar { 

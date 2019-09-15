@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../css/SignUp.css';
 import {Link} from 'react-router-dom';
 import socket from '../server/client-socket';
+import { withAlert } from 'react-alert';
 
 class SignUp extends Component {
 
@@ -33,7 +34,11 @@ class SignUp extends Component {
 
     componentDidMount() {
         socket.on('saved', (data) => {
-            alert(data)
+            this.props.alert.success(data)
+            
+        });
+        socket.on('unsaved-error', (data) => {
+            this.props.alert.error(data)    
         });
     }
 
@@ -69,4 +74,4 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp
+export default withAlert()(SignUp)
