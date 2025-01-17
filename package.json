@@ -10,7 +10,7 @@
     "bootstrap": "^4.3.1",
     "faker": "^4.1.0",
     "mongodb": "^3.3.2",
-    "mongoose": "^5.6.13",
+    "mongoose": "^8.9.5",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-alert": "^5.5.0",
